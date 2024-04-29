@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- <style>
+        a{
+            color: white;
+        }
+        a:hover{
+            transition: cubic-bezier(0.075, 0.82, 0.165, 1), ;
+        }
+    </style> -->
+</head>
+<body class=" text-black">
+    <div class="navbarToggleExternalContent">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="list-group" role="tablist" id="list-tab">
+            <li class="l-inline"><a href="/" class="link-white">Home</a></li>
+            <li class="l-inline"><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'allproducts' %}">Categories</a></li>
+            <li><a href="{% url 'mycart' %}">View Cart</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% if request.session.customer %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            Welcome, {{request.user.username}}
+            {% else %}
+            <li><a href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

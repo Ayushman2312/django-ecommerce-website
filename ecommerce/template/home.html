@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center">
+        Welcome to our E-Commerce Webiste
+    </h1>
+
+    <div class="row">
+        
+        {% for p in product_list %}
+        <div class="col-md-4" style="border:1px solid silver;"> 
+            <h1><a href="{% url 'productdetail' p.slug %}">{{p.title}}</a></h1>
+            <img src="{{p.image.url}}" alt="" class="img-fluid" style="height: 2500;
+            object-fit:cover;">
+            <p><strike>Rs.{{p.marked_price}}</strike>Rs.{{p.selling_price}}</p>
+            <a href="{% url 'addtocart' p.id  %}" class="btn btn-primary">Add To Cart</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
